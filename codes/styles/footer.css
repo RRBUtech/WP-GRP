@@ -1,0 +1,16 @@
+/* Footer */
+footer {
+    background-color: #1E1E1E; /* Deep Charcoal Black */
+    color: #F8F9FA; /* Pure White */
+    padding: 10px 20px;
+    text-align: center;
+}
+
+footer a {
+    color: #16A34A; /* Vibrant Green */
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,44 @@
+/* General Styles for Navigation Bar */
+nav {
+    background-color: #1E1E1E; /* Deep Charcoal Black */
+    padding: 20px 20px;
+    text-align: center;
+}
+
+nav a {
+    color: #F8F9FA; /* Pure White */
+    text-decoration: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 3px;
+}
+
+nav a:hover {
+    background-color: #16A34A; /* Vibrant Green */
+    color: #F8F9FA; /* Pure White */
+}
+
+nav a:active {
+    background-color: #128A39; /* Slightly darker green */
+}
+
+nav a.active {
+    background-color: #16A34A; /* Vibrant Green */
+    color: #F8F9FA; /* Pure White */
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 768px) {
+    nav {
+        padding: 10px 5px;
+    }
+
+    nav a {
+        display: block;
+        margin: 5px 0;
+        text-align: left;
+        padding: 8px 15px;
+    }
+}

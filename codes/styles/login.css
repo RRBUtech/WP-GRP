@@ -1,0 +1,76 @@
+/* General styles for the page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F8F9FA; /* Pure White */
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    margin: 50px 0;
+}
+
+h2 {
+    color: #333;
+}
+
+/* Styling for the login container */
+.login-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin-top: 10px;
+    margin: 30px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin: 10px 0 5px;
+    color: #333; /* Keeps the label readable */
+}
+
+input {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px;
+    background-color: #16A34A; /* Vibrant Green */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #15803D; /* Darker Green on Hover */
+}
+
+/* Error message styling */
+.error-message {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 600px) {
+    .login-container {
+        width: 90%;
+        padding: 20px;
+    }
+}
