@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./styles/login.css" />
     <link rel="stylesheet" href="./styles/navbar.css" />
     <link rel="stylesheet" href="./styles/footer.css" />
-    <script defer src="./scripts/scripts.js"></script>
+    <script defer src="./scripts/auth.js"></script>
   </head>
   <body>
     <nav>
@@ -22,16 +22,30 @@
 
     <main>
       <section class="login-container">
-        <h2>Login Page</h2>
+        <h2>Login</h2>
         <form id="loginForm">
-          <label for="username">Username:</label>
-          <input type="text" id="username" required />
+          <label for="trn">TRN (000-000-000):</label>
+          <input
+            type="text"
+            id="trn"
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}"
+            required
+          />
 
           <label for="password">Password:</label>
           <input type="password" id="password" required minlength="8" />
 
-          <button type="submit">Login</button>
+          <div class="button-group">
+            <button type="submit">Login</button>
+            <button type="reset">Cancel</button>
+          </div>
+
           <p id="error-message" class="error-message"></p>
+
+          <div class="links">
+            <a href="register.html">New user? Register here</a>
+            <a href="reset-password.html">Forgot password?</a>
+          </div>
         </form>
       </section>
     </main>
