@@ -8,6 +8,92 @@ if (!localStorage.getItem("RegistrationData")) {
   localStorage.setItem("RegistrationData", JSON.stringify([]));
 }
 
+// Default admin user
+const DEFAULT_ADMIN = {
+  firstName: "Admin",
+  lastName: "User",
+  email: "admin@jamaicaautospa.com",
+  password: "admin123", // In a real application, this should be hashed
+  trn: "999-999-999",
+  dob: "1990-01-01",
+  gender: "other",
+  role: "admin",
+  cart: {},
+  invoices: [],
+};
+
+// Initialize admin user if not exists
+function initializeAdminUser() {
+  const registrationData = JSON.parse(
+    localStorage.getItem("RegistrationData") || "[]"
+  );
+  const adminExists = registrationData.some((user) => user.role === "admin");
+
+  if (!adminExists) {
+    registrationData.push(DEFAULT_ADMIN);
+    localStorage.setItem("RegistrationData", JSON.stringify(registrationData));
+  }
+}
+
+// Check if user is logged in
+function checkLoginStatus() {
+  const currentUser = localStorage.getItem("currentUser");
+  if (!currentUser) {
+    window.location.href = "login.html";
+    return false;
+  }
+  return true;
+}
+
+// Login function
+function login(email, password) {
+  const registrationData = JSON.parse(
+    localStorage.getItem("RegistrationData") || "[]"
+  );
+  const user = registrationData.find(
+    (u) => u.email === email && u.password === password
+  );
+
+  if (user) {
+    localStorage.setItem("currentUser", JSON.stringify(user));
+    return true;
+  }
+  return false;
+}
+
+// Logout function
+function logout() {
+  localStorage.removeItem("currentUser");
+  window.location.href = "index.html";
+}
+
+// Register function
+function register(userData) {
+  const registrationData = JSON.parse(
+    localStorage.getItem("RegistrationData") || "[]"
+  );
+
+  // Check if user already exists
+  if (registrationData.some((user) => user.email === userData.email)) {
+    return false;
+  }
+
+  // Set default role as user
+  userData.role = "user";
+  userData.cart = {};
+  userData.invoices = [];
+
+  registrationData.push(userData);
+  localStorage.setItem("RegistrationData", JSON.stringify(registrationData));
+  return true;
+}
+
+// Check if user is admin
+function isAdmin() {
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  return currentUser?.role === "admin";
+}
+
 document.getElementById("loginForm")?.addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -195,3 +281,6 @@ document
   ?.addEventListener("click", function () {
     document.getElementById("error-message").textContent = "";
   });
+
+// Initialize admin user when the script loads
+initializeAdminUser();

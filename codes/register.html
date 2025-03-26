@@ -4,105 +4,96 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register - Jamaica Auto Spa</title>
-    <link rel="stylesheet" href="./styles/login.css" />
-    <link rel="stylesheet" href="./styles/navbar.css" />
-    <link rel="stylesheet" href="./styles/footer.css" />
-    <script defer src="./scripts/auth.js"></script>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="login.html">Login</a>
-      <a href="products.html">Services</a>
-      <a href="about.html">About Us</a>
-    </nav>
+    <nav-bar></nav-bar>
 
-    <main>
-      <section class="login-container">
-        <h2>Register</h2>
-        <form id="registrationForm">
+    <main class="main-content">
+      <div class="auth-container">
+        <h1>Register</h1>
+        <form id="registerForm">
           <div class="form-group">
             <label for="firstName">First Name:</label>
-            <input type="text" id="firstName" required />
+            <input type="text" id="firstName" name="firstName" required />
           </div>
-
           <div class="form-group">
             <label for="lastName">Last Name:</label>
-            <input type="text" id="lastName" required />
+            <input type="text" id="lastName" name="lastName" required />
           </div>
-
-          <div class="form-group">
-            <label for="dob">Date of Birth:</label>
-            <input type="date" id="dob" required />
-          </div>
-
-          <div class="form-group">
-            <label for="gender">Gender:</label>
-            <select id="gender" required>
-              <option value="">Select Gender</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="phone">Phone Number:</label>
-            <input
-              type="tel"
-              id="phone"
-              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-              placeholder="876-XXX-XXXX"
-              required
-            />
-          </div>
-
           <div class="form-group">
             <label for="email">Email:</label>
-            <input type="email" id="email" required />
+            <input type="email" id="email" name="email" required />
           </div>
-
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              required
+              minlength="8"
+            />
+          </div>
           <div class="form-group">
             <label for="trn">TRN (000-000-000):</label>
             <input
               type="text"
               id="trn"
+              name="trn"
               pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}"
               required
             />
           </div>
-
           <div class="form-group">
-            <label for="password">Password (min 8 characters):</label>
-            <input type="password" id="password" minlength="8" required />
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required />
           </div>
-
           <div class="form-group">
-            <label for="confirmPassword">Confirm Password:</label>
-            <input
-              type="password"
-              id="confirmPassword"
-              minlength="8"
-              required
-            />
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+              <option value="">Select gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
           </div>
-
-          <div class="button-group">
-            <button type="submit">Register</button>
-            <button type="reset">Cancel</button>
-          </div>
-
-          <p id="error-message" class="error-message"></p>
-
-          <div class="links">
-            <a href="login.html">Already have an account? Login here</a>
-          </div>
+          <div id="error-message" class="error-message"></div>
+          <button type="submit" class="submit-btn">Register</button>
         </form>
-      </section>
+        <p class="auth-link">
+          Already have an account? <a href="login.html">Login here</a>
+        </p>
+      </div>
     </main>
 
-    <footer>
-      <p>&copy; 2025 Jamaica Auto Spa. All Rights Reserved.</p>
-    </footer>
+    <site-footer></site-footer>
+
+    <script src="scripts/components.js"></script>
+    <script src="scripts/auth.js"></script>
+    <script>
+      document
+        .getElementById("registerForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const errorMessage = document.getElementById("error-message");
+
+          const userData = {
+            firstName: document.getElementById("firstName").value,
+            lastName: document.getElementById("lastName").value,
+            email: document.getElementById("email").value,
+            password: document.getElementById("password").value,
+            trn: document.getElementById("trn").value,
+            dob: document.getElementById("dob").value,
+            gender: document.getElementById("gender").value,
+          };
+
+          if (register(userData)) {
+            window.location.href = "login.html";
+          } else {
+            errorMessage.textContent = "Email already registered";
+          }
+        });
+    </script>
   </body>
 </html>

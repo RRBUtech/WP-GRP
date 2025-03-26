@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Profile - Jamaica Auto Spa</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .profile-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .profile-header {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+      }
+      .profile-info {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+      }
+      .profile-info-item {
+        padding: 15px;
+        background: #f8f9fa;
+        border-radius: 4px;
+      }
+      .profile-info-item h3 {
+        color: #666;
+        margin-bottom: 5px;
+      }
+      .profile-info-item p {
+        color: #333;
+        font-weight: 500;
+      }
+      .invoice-history {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .invoice-history h2 {
+        margin-bottom: 20px;
+        color: #333;
+      }
+      .invoice-list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+      .invoice-card {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid #eee;
+      }
+      .invoice-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+      }
+      .invoice-number {
+        font-weight: bold;
+        color: #2c3e50;
+      }
+      .invoice-date {
+        color: #666;
+      }
+      .invoice-items {
+        margin-bottom: 15px;
+      }
+      .invoice-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 0;
+        color: #666;
+      }
+      .invoice-totals {
+        display: flex;
+        justify-content: flex-end;
+        gap: 20px;
+        padding-top: 10px;
+        border-top: 1px solid #eee;
+      }
+      .invoice-total {
+        font-weight: bold;
+        color: #2c3e50;
+      }
+      .no-invoices {
+        text-align: center;
+        padding: 40px;
+        color: #666;
+      }
+      .print-invoice {
+        background: #2c3e50;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      .print-invoice:hover {
+        background: #34495e;
+      }
+    </style>
+  </head>
+  <body>
+    <nav-bar></nav-bar>
+    <main>
+      <div class="profile-container">
+        <div class="profile-header">
+          <h1>My Profile</h1>
+          <div class="profile-info" id="profile-info">
+            <!-- Profile info will be dynamically added here -->
+          </div>
+        </div>
+
+        <div class="invoice-history">
+          <h2>Invoice History</h2>
+          <div class="invoice-list" id="invoice-list">
+            <!-- Invoices will be dynamically added here -->
+          </div>
+        </div>
+      </div>
+    </main>
+    <site-footer></site-footer>
+
+    <script src="scripts/components.js"></script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/profile.js"></script>
+  </body>
+</html>

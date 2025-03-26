@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Jamaica Auto Spa</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles/dashboard.css" />
+  </head>
+  <body>
+    <nav-bar></nav-bar>
+
+    <div class="dashboard-container">
+      <h1>Dashboard</h1>
+
+      <div class="stats-section">
+        <div class="stat-card">
+          <h3>User Statistics</h3>
+          <div class="stat-grid" id="gender-stats">
+            <!-- Gender stats will be populated here -->
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <h3>Age Distribution</h3>
+          <div class="stat-grid" id="age-stats">
+            <!-- Age stats will be populated here -->
+          </div>
+        </div>
+      </div>
+
+      <div class="invoices-section">
+        <h2>All Invoices</h2>
+        <button class="refresh-btn" onclick="refreshDashboard()">
+          Refresh Data
+        </button>
+        <table class="invoice-table">
+          <thead>
+            <tr>
+              <th>Invoice Number</th>
+              <th>Customer Name</th>
+              <th>Date</th>
+              <th>Total Amount</th>
+            </tr>
+          </thead>
+          <tbody id="invoices-list">
+            <!-- Invoices will be populated here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <site-footer></site-footer>
+
+    <script src="scripts/components.js"></script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/dashboard.js"></script>
+  </body>
+</html>

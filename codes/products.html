@@ -3,171 +3,377 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Services - Jamaica Auto Spa</title>
-    <link rel="stylesheet" href="./styles/product.css" />
-    <link rel="stylesheet" href="./styles/navbar.css" />
-    <link rel="stylesheet" href="./styles/footer.css" />
-    <script defer src="./scripts/product.js"></script>
+    <title>Products - Jamaica Auto Spa</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .products-layout {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 20px;
+        padding: 20px;
+      }
+      .cart-preview {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 20px;
+      }
+      .cart-preview h2 {
+        margin-bottom: 15px;
+        color: #333;
+      }
+      .cart-items {
+        margin-bottom: 15px;
+      }
+      .cart-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+      }
+      .cart-total {
+        font-weight: bold;
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 2px solid #eee;
+      }
+      .product-card {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 20px;
+        align-items: start;
+      }
+      .product-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+      .product-info {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .product-description {
+        color: #666;
+        line-height: 1.5;
+      }
+    </style>
   </head>
   <body>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="login.html">Login</a>
-      <a href="products.html" class="active">Services</a>
-      <a href="about.html">About Us</a>
-    </nav>
-    <hr>
-    <header>
-      <h2>Our Services</h2>
-    </header>
+    <nav-bar></nav-bar>
 
-    <main>
-      <section class="product-list">
-        <!-- Basic Wash -->
-        <div class="product" data-id="1" data-name="Basic Wash" data-price="50">
-          <h3>Basic Wash</h3>
-          <p>$50</p>
-          <input type="number" id="product-1-qty" value="1" min="1" />
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-        <!-- Interior Detailing -->
-        <div
-          class="product"
-          data-id="2"
-          data-name="Interior Detailing"
-          data-price="100"
-        >
-          <h3>Interior Detailing</h3>
-          <p>$100</p>
-          <input type="number" id="product-2-qty" value="1" min="1" />
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-        <!-- Exterior Detailing -->
-        <div
-          class="product"
-          data-id="3"
-          data-name="Exterior Detailing"
-          data-price="120"
-        >
-          <h3>Exterior Detailing</h3>
-          <p>$120</p>
-          <input type="number" id="product-3-qty" value="1" min="1" />
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-        <!-- Full Detailing -->
-        <div
-          class="product"
-          data-id="4"
-          data-name="Full Detailing"
-          data-price="200"
-        >
-          <h3>Full Detailing</h3>
-          <p>$200</p>
-          <input type="number" id="product-4-qty" value="1" min="1" />
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-        <!-- Engine Cleaning -->
-        <div
-          class="product"
-          data-id="5"
-          data-name="Engine Cleaning"
-          data-price="80"
-        >
-          <h3>Engine Cleaning</h3>
-          <p>$80</p>
-          <input type="number" id="product-5-qty" value="1" min="1" />
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-        <!-- Headlight Restoration -->
-        <div
-          class="product"
-          data-id="6"
-          data-name="Headlight Restoration"
-          data-price="50"
-        >
-          <h3>Headlight Restoration</h3>
-          <p>$50</p>
-          <input type="number" id="product-6-qty" value="1" min="1" />
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-        <!-- Clay Bar Treatment -->
-        <div
-          class="product"
-          data-id="7"
-          data-name="Clay Bar Treatment"
-          data-price="60"
-        >
-          <h3>Clay Bar Treatment</h3>
-          <p>$60</p>
-          <input type="number" id="product-7-qty" value="1" min="1" />
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-        <!-- Ceramic Coating -->
-        <div
-          class="product"
-          data-id="8"
-          data-name="Ceramic Coating"
-          data-price="350"
-        >
-          <h3>Ceramic Coating</h3>
-          <p>$350</p>
-          <input type="number" id="product-8-qty" value="1" min="1" />
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-        <!-- Paint Correction -->
-        <div
-          class="product"
-          data-id="9"
-          data-name="Paint Correction"
-          data-price="300"
-        >
-          <h3>Paint Correction</h3>
-          <p>$300</p>
-          <input type="number" id="product-9-qty" value="1" min="1" />
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-        <!-- Upholstery Cleaning -->
-        <div
-          class="product"
-          data-id="10"
-          data-name="Upholstery Cleaning"
-          data-price="90"
-        >
-          <h3>Upholstery Cleaning</h3>
-          <p>$90</p>
-          <input type="number" id="product-10-qty" value="1" min="1" />
-          <button class="add-to-cart">Add to Cart</button>
-        </div>
-      </section>
+    <main class="main-content">
+      <div class="products-container">
+        <h1>Our Products</h1>
+        <div class="products-layout">
+          <div class="product-grid" id="products-grid">
+            <!-- Basic Wash -->
+            <div
+              class="product-card"
+              data-id="1"
+              data-name="Basic Wash"
+              data-price="50"
+            >
+              <img
+                src="../assets/basic-wash.jpg"
+                alt="Basic Wash"
+                class="product-image"
+              />
+              <div class="product-info">
+                <h3>Basic Wash</h3>
+                <p class="product-description">
+                  A thorough exterior wash including hand washing, wheel
+                  cleaning, and tire dressing. Perfect for regular maintenance.
+                </p>
+                <p class="price">$50</p>
+                <div class="form-group">
+                  <label for="product-1-qty">Quantity:</label>
+                  <input type="number" id="product-1-qty" value="1" min="1" />
+                </div>
+                <button class="btn-primary add-to-cart">Add to Cart</button>
+              </div>
+            </div>
 
-      <aside class="cart">
-        <h2>Cart</h2>
-        <table id="cart-table">
-          <thead>
-            <tr>
-              <th>Product</th>
-              <th>Quantity</th>
-              <th>Price</th>
-              <th>Total</th>
-            </tr>
-          </thead>
-          <tbody id="cart-items">
-            <!-- Cart items will be dynamically added here -->
-          </tbody>
-        </table>
-        <div id="cart-total">
-          <p>
-            <strong>Total: $<span id="total-price">0</span></strong>
-          </p>
+            <!-- Interior Detailing -->
+            <div
+              class="product-card"
+              data-id="2"
+              data-name="Interior Detailing"
+              data-price="100"
+            >
+              <img
+                src="../assets/interior-detail.jpg"
+                alt="Interior Detailing"
+                class="product-image"
+              />
+              <div class="product-info">
+                <h3>Interior Detailing</h3>
+                <p class="product-description">
+                  Complete interior cleaning including vacuuming, upholstery
+                  cleaning, dashboard detailing, and window cleaning.
+                </p>
+                <p class="price">$100</p>
+                <div class="form-group">
+                  <label for="product-2-qty">Quantity:</label>
+                  <input type="number" id="product-2-qty" value="1" min="1" />
+                </div>
+                <button class="btn-primary add-to-cart">Add to Cart</button>
+              </div>
+            </div>
+
+            <!-- Exterior Detailing -->
+            <div
+              class="product-card"
+              data-id="3"
+              data-name="Exterior Detailing"
+              data-price="120"
+            >
+              <img
+                src="../assets/exterior-detail.jpg"
+                alt="Exterior Detailing"
+                class="product-image"
+              />
+              <div class="product-info">
+                <h3>Exterior Detailing</h3>
+                <p class="product-description">
+                  Comprehensive exterior cleaning including paint
+                  decontamination, waxing, wheel detailing, and tire dressing.
+                  Restores your car's shine and protects the paint.
+                </p>
+                <p class="price">$120</p>
+                <div class="form-group">
+                  <label for="product-3-qty">Quantity:</label>
+                  <input type="number" id="product-3-qty" value="1" min="1" />
+                </div>
+                <button class="btn-primary add-to-cart">Add to Cart</button>
+              </div>
+            </div>
+
+            <!-- Full Detailing -->
+            <div
+              class="product-card"
+              data-id="4"
+              data-name="Full Detailing"
+              data-price="200"
+            >
+              <img
+                src="../assets/full-detail.jpg"
+                alt="Full Detailing"
+                class="product-image"
+              />
+              <div class="product-info">
+                <h3>Full Detailing</h3>
+                <p class="product-description">
+                  Complete car detailing package including both interior and
+                  exterior detailing, engine bay cleaning, and paint protection.
+                  The ultimate car care experience.
+                </p>
+                <p class="price">$200</p>
+                <div class="form-group">
+                  <label for="product-4-qty">Quantity:</label>
+                  <input type="number" id="product-4-qty" value="1" min="1" />
+                </div>
+                <button class="btn-primary add-to-cart">Add to Cart</button>
+              </div>
+            </div>
+
+            <!-- Engine Cleaning -->
+            <div
+              class="product-card"
+              data-id="5"
+              data-name="Engine Cleaning"
+              data-price="80"
+            >
+              <img
+                src="../assets/engine-clean.jpg"
+                alt="Engine Cleaning"
+                class="product-image"
+              />
+              <div class="product-info">
+                <h3>Engine Cleaning</h3>
+                <p class="product-description">
+                  Professional engine bay cleaning including degreasing,
+                  pressure washing, and dressing of plastic and rubber
+                  components. Improves engine appearance and helps identify
+                  potential issues.
+                </p>
+                <p class="price">$80</p>
+                <div class="form-group">
+                  <label for="product-5-qty">Quantity:</label>
+                  <input type="number" id="product-5-qty" value="1" min="1" />
+                </div>
+                <button class="btn-primary add-to-cart">Add to Cart</button>
+              </div>
+            </div>
+
+            <!-- Headlight Restoration -->
+            <div
+              class="product-card"
+              data-id="6"
+              data-name="Headlight Restoration"
+              data-price="50"
+            >
+              <img
+                src="../assets/headlight-restore.jpg"
+                alt="Headlight Restoration"
+                class="product-image"
+              />
+              <div class="product-info">
+                <h3>Headlight Restoration</h3>
+                <p class="product-description">
+                  Restore cloudy, yellowed headlights to like-new condition.
+                  Includes sanding, polishing, and UV protection coating to
+                  prevent future oxidation.
+                </p>
+                <p class="price">$50</p>
+                <div class="form-group">
+                  <label for="product-6-qty">Quantity:</label>
+                  <input type="number" id="product-6-qty" value="1" min="1" />
+                </div>
+                <button class="btn-primary add-to-cart">Add to Cart</button>
+              </div>
+            </div>
+
+            <!-- Clay Bar Treatment -->
+            <div
+              class="product-card"
+              data-id="7"
+              data-name="Clay Bar Treatment"
+              data-price="60"
+            >
+              <img
+                src="../assets/clay-bar.jpg"
+                alt="Clay Bar Treatment"
+                class="product-image"
+              />
+              <div class="product-info">
+                <h3>Clay Bar Treatment</h3>
+                <p class="product-description">
+                  Remove embedded contaminants from your paint surface using
+                  professional clay bar treatment. Prepares your paint for
+                  waxing or ceramic coating.
+                </p>
+                <p class="price">$60</p>
+                <div class="form-group">
+                  <label for="product-7-qty">Quantity:</label>
+                  <input type="number" id="product-7-qty" value="1" min="1" />
+                </div>
+                <button class="btn-primary add-to-cart">Add to Cart</button>
+              </div>
+            </div>
+
+            <!-- Ceramic Coating -->
+            <div
+              class="product-card"
+              data-id="8"
+              data-name="Ceramic Coating"
+              data-price="350"
+            >
+              <img
+                src="../assets/ceramic-coat.jpg"
+                alt="Ceramic Coating"
+                class="product-image"
+              />
+              <div class="product-info">
+                <h3>Ceramic Coating</h3>
+                <p class="product-description">
+                  Long-lasting paint protection that provides superior water
+                  beading, chemical resistance, and UV protection. Includes
+                  paint preparation and coating application.
+                </p>
+                <p class="price">$350</p>
+                <div class="form-group">
+                  <label for="product-8-qty">Quantity:</label>
+                  <input type="number" id="product-8-qty" value="1" min="1" />
+                </div>
+                <button class="btn-primary add-to-cart">Add to Cart</button>
+              </div>
+            </div>
+
+            <!-- Paint Correction -->
+            <div
+              class="product-card"
+              data-id="9"
+              data-name="Paint Correction"
+              data-price="300"
+            >
+              <img
+                src="../assets/paint-correction.jpg"
+                alt="Paint Correction"
+                class="product-image"
+              />
+              <div class="product-info">
+                <h3>Paint Correction</h3>
+                <p class="product-description">
+                  Professional paint correction service to remove swirl marks,
+                  scratches, and oxidation. Includes multi-stage polishing and
+                  paint protection.
+                </p>
+                <p class="price">$300</p>
+                <div class="form-group">
+                  <label for="product-9-qty">Quantity:</label>
+                  <input type="number" id="product-9-qty" value="1" min="1" />
+                </div>
+                <button class="btn-primary add-to-cart">Add to Cart</button>
+              </div>
+            </div>
+
+            <!-- Upholstery Cleaning -->
+            <div
+              class="product-card"
+              data-id="10"
+              data-name="Upholstery Cleaning"
+              data-price="90"
+            >
+              <img
+                src="../assets/upholstery-clean.jpg"
+                alt="Upholstery Cleaning"
+                class="product-image"
+              />
+              <div class="product-info">
+                <h3>Upholstery Cleaning</h3>
+                <p class="product-description">
+                  Deep cleaning of all upholstery surfaces including seats,
+                  carpets, and door panels. Removes stains, odors, and restores
+                  fabric to like-new condition.
+                </p>
+                <p class="price">$90</p>
+                <div class="form-group">
+                  <label for="product-10-qty">Quantity:</label>
+                  <input type="number" id="product-10-qty" value="1" min="1" />
+                </div>
+                <button class="btn-primary add-to-cart">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="cart-preview">
+            <h2>Cart Preview</h2>
+            <div class="cart-items" id="cart-preview-items">
+              <!-- Cart items will be dynamically added here -->
+            </div>
+            <div class="cart-total">
+              <p>Total: $<span id="cart-preview-total">0.00</span></p>
+            </div>
+            <button
+              class="btn-primary"
+              onclick="window.location.href='cart.html'"
+            >
+              View Cart
+            </button>
+          </div>
         </div>
-        <button id="checkout">Checkout</button>
-        <button id="cancelOrder">Clear</button>
-        <button id="exit">Exit</button>
-      </aside>
+      </div>
     </main>
 
-    <footer>
-      <p>&copy; 2025 Jamaica Auto Spa. All Rights Reserved.</p>
-    </footer>
+    <site-footer></site-footer>
+
+    <script src="scripts/components.js"></script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/products.js"></script>
   </body>
 </html>

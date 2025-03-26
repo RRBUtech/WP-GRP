@@ -4,53 +4,47 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login - Jamaica Auto Spa</title>
-    <link rel="stylesheet" href="./styles/login.css" />
-    <link rel="stylesheet" href="./styles/navbar.css" />
-    <link rel="stylesheet" href="./styles/footer.css" />
-    <script defer src="./scripts/auth.js"></script>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="login.html" class="active">Login</a>
-      <a href="products.html">Services</a>
-      <a href="about.html">About Us</a>
-    </nav>
-    <!-- <header>
-      <h2>Login Page</h2>
-    </header> -->
+    <nav-bar></nav-bar>
 
-    <main>
-      <section class="login-container">
+    <main class="main-content">
+      <div class="auth-container">
         <h2>Login</h2>
         <form id="loginForm">
-          <label for="trn">TRN (000-000-000):</label>
-          <input
-            type="text"
-            id="trn"
-            pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}"
-            required
-          />
-
-          <label for="password">Password:</label>
-          <input type="password" id="password" required minlength="8" />
-
-          <div class="button-group">
-            <button type="submit">Login</button>
-            <button type="reset">Cancel</button>
+          <div class="form-group">
+            <label for="trn">TRN</label>
+            <input
+              type="text"
+              id="trn"
+              name="trn"
+              pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}"
+              required
+            />
+            <div class="error-message" id="trnError"></div>
           </div>
-
-          <p id="error-message" class="error-message"></p>
-
-          <div class="links">
-            <a href="register.html">New user? Register here</a>
-            <a href="reset-password.html">Forgot password?</a>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required />
+            <div class="error-message" id="passwordError"></div>
+          </div>
+          <div class="form-switch">
+            <a href="reset-password.html">Forgot Password?</a>
+          </div>
+          <button type="submit" class="submit-btn">Login</button>
+          <div class="form-switch">
+            <span
+              >Don't have an account? <a href="register.html">Register</a></span
+            >
           </div>
         </form>
-      </section>
+      </div>
     </main>
-    <footer>
-      <p>&copy; 2025 Jamaica Auto Spa. All Rights Reserved.</p>
-    </footer>
+
+    <site-footer></site-footer>
+
+    <script src="scripts/components.js"></script>
+    <script src="scripts/login.js"></script>
   </body>
 </html>

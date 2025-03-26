@@ -5,124 +5,192 @@ if (!localStorage.getItem("currentUser")) {
 
 document.addEventListener("DOMContentLoaded", function () {
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-  const cartItems = JSON.parse(localStorage.getItem("checkoutCart"));
-  const charges = JSON.parse(localStorage.getItem("charges"));
+  const cartItems = JSON.parse(localStorage.getItem("checkoutCart") || "{}");
+  const charges = JSON.parse(localStorage.getItem("charges") || "{}");
 
   // Generate unique invoice number (timestamp + last 4 of TRN)
   const invoiceNumber = `INV-${Date.now()}-${currentUser.trn.slice(-4)}`;
 
-  // Create invoice object
-  const invoice = {
-    invoiceNumber,
-    companyName: "Jamaica Auto Spa",
-    date: new Date().toISOString(),
-    customerInfo: {
-      name: `${currentUser.firstName} ${currentUser.lastName}`,
-      trn: currentUser.trn,
-      email: currentUser.email,
-    },
-    items: Object.values(cartItems),
-    charges: charges,
-  };
-
   // Display invoice details
-  displayInvoice(invoice);
+  document.getElementById("invoice-number").textContent = invoiceNumber;
+  document.getElementById("invoice-date").textContent =
+    new Date().toLocaleDateString();
+  document.getElementById(
+    "customer-name"
+  ).textContent = `${currentUser.firstName} ${currentUser.lastName}`;
+  document.getElementById("customer-email").textContent = currentUser.email;
+  document.getElementById("customer-phone").textContent = currentUser.phone;
 
-  // Handle print functionality
-  document.getElementById("printInvoice").addEventListener("click", () => {
-    window.print();
-  });
-
-  // Handle complete order functionality
-  document.getElementById("completeOrder").addEventListener("click", () => {
-    // Save invoice to user's invoices array
-    currentUser.invoices.push(invoice);
-    localStorage.setItem("currentUser", JSON.stringify(currentUser));
-
-    // Update user's invoices in RegistrationData
-    const registrationData = JSON.parse(
-      localStorage.getItem("RegistrationData")
-    );
-    const userIndex = registrationData.findIndex(
-      (user) => user.trn === currentUser.trn
-    );
-    if (userIndex !== -1) {
-      registrationData[userIndex].invoices.push(invoice);
-      localStorage.setItem(
-        "RegistrationData",
-        JSON.stringify(registrationData)
-      );
-    }
-
-    // Save invoice to AllInvoices
-    const allInvoices = JSON.parse(localStorage.getItem("AllInvoices") || "[]");
-    allInvoices.push(invoice);
-    localStorage.setItem("AllInvoices", JSON.stringify(allInvoices));
-
-    // Clear cart
-    currentUser.cart = {};
-    localStorage.setItem("currentUser", JSON.stringify(currentUser));
-    localStorage.removeItem("checkoutCart");
-    localStorage.removeItem("charges");
-
-    // Show email notification
-    alert(`Invoice #${invoiceNumber} has been sent to ${currentUser.email}`);
-
-    // Redirect to products page
-    window.location.href = "products.html";
-  });
-
-  // Handle cancel functionality
-  document.getElementById("cancelOrder").addEventListener("click", () => {
-    localStorage.removeItem("checkoutCart");
-    localStorage.removeItem("charges");
-    window.location.href = "products.html";
-  });
-
-  // Handle exit functionality
-  document.getElementById("exit").addEventListener("click", () => {
-    window.location.href = "index.html";
-  });
-});
-
-function displayInvoice(invoice) {
-  // Display company info
-  document.getElementById("company-name").textContent = invoice.companyName;
-  document.getElementById("invoice-number").textContent = invoice.invoiceNumber;
-  document.getElementById("invoice-date").textContent = new Date(
-    invoice.date
-  ).toLocaleDateString();
-
-  // Display customer info
-  document.getElementById("customer-name").textContent =
-    invoice.customerInfo.name;
-  document.getElementById("customer-trn").textContent =
-    invoice.customerInfo.trn;
-  document.getElementById("customer-email").textContent =
-    invoice.customerInfo.email;
-
-  // Display items
-  const cartItemsContainer = document.getElementById("cart-items");
-  invoice.items.forEach((item) => {
+  // Display cart items
+  const cartItemsContainer = document.getElementById("invoice-items");
+  Object.entries(cartItems).forEach(([id, item]) => {
     const row = document.createElement("tr");
+    const itemTotal = item.price * item.qty;
+
     row.innerHTML = `
             <td>${item.name}</td>
             <td>${item.qty}</td>
             <td>$${item.price.toFixed(2)}</td>
-            <td>$${(item.price * item.qty).toFixed(2)}</td>
+            <td>$${itemTotal.toFixed(2)}</td>
         `;
     cartItemsContainer.appendChild(row);
   });
 
   // Display charges
-  document.getElementById("subtotal").textContent =
-    invoice.charges.subtotal.toFixed(2);
-  document.getElementById("tax").textContent = invoice.charges.tax.toFixed(2);
-  document.getElementById("discount").textContent =
-    invoice.charges.discount.toFixed(2);
-  document.getElementById("total").textContent =
-    invoice.charges.total.toFixed(2);
-}
+  document.getElementById("invoice-subtotal").textContent =
+    charges.subtotal.toFixed(2);
+  document.getElementById("invoice-tax").textContent = charges.tax.toFixed(2);
+  document.getElementById("invoice-total").textContent =
+    charges.total.toFixed(2);
+
+  // Handle print invoice
+  document
+    .getElementById("print-invoice")
+    .addEventListener("click", function () {
+      // Create a new window for printing
+      const printWindow = window.open("", "_blank");
+      printWindow.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Invoice ${invoiceNumber}</title>
+            <style>
+                body { font-family: Arial, sans-serif; padding: 20px; }
+                .invoice-header { text-align: center; margin-bottom: 30px; }
+                .invoice-details { margin-bottom: 30px; }
+                table { width: 100%; border-collapse: collapse; margin-bottom: 30px; }
+                th, td { padding: 10px; border-bottom: 1px solid #ddd; text-align: left; }
+                .totals { text-align: right; }
+            </style>
+        </head>
+        <body>
+            <div class="invoice-header">
+                <h1>Jamaica Auto Spa</h1>
+                <p>123 Auto Street, Kingston, Jamaica</p>
+                <p>Phone: (876) 555-0123 | Email: info@jamaicaautospa.com</p>
+            </div>
+            <div class="invoice-details">
+                <p><strong>Invoice Number:</strong> ${invoiceNumber}</p>
+                <p><strong>Date:</strong> ${new Date().toLocaleDateString()}</p>
+                <p><strong>Customer:</strong> ${
+                  currentUser.firstName
+                } ${currentUser.lastName}</p>
+                <p><strong>Email:</strong> ${currentUser.email}</p>
+                <p><strong>Phone:</strong> ${currentUser.phone}</p>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${Object.entries(cartItems)
+                      .map(
+                        ([id, item]) => `
+                        <tr>
+                            <td>${item.name}</td>
+                            <td>${item.qty}</td>
+                            <td>$${item.price.toFixed(2)}</td>
+                            <td>$${(item.price * item.qty).toFixed(2)}</td>
+                        </tr>
+                    `
+                      )
+                      .join("")}
+                </tbody>
+            </table>
+            <div class="totals">
+                <p>Subtotal: $${charges.subtotal.toFixed(2)}</p>
+                <p>Tax: $${charges.tax.toFixed(2)}</p>
+                <p><strong>Total: $${charges.total.toFixed(2)}</strong></p>
+            </div>
+        </body>
+        </html>
+      `);
+
+      printWindow.document.close();
+      printWindow.print();
+    });
+
+  // Handle back to cart
+  document
+    .getElementById("back-to-cart")
+    .addEventListener("click", function () {
+      window.location.href = "cart.html";
+    });
+
+  // Handle confirm order
+  document
+    .getElementById("confirm-order")
+    .addEventListener("click", function () {
+      // Create invoice object
+      const invoice = {
+        invoiceNumber,
+        date: new Date().toISOString(),
+        customerInfo: {
+          name: `${currentUser.firstName} ${currentUser.lastName}`,
+          email: currentUser.email,
+          phone: currentUser.phone,
+          trn: currentUser.trn,
+        },
+        items: Object.values(cartItems),
+        charges: charges,
+      };
+
+      // Save invoice to user's invoices array
+      if (!currentUser.invoices) {
+        currentUser.invoices = [];
+      }
+      currentUser.invoices.push(invoice);
+      localStorage.setItem("currentUser", JSON.stringify(currentUser));
+
+      // Update user in RegistrationData
+      const registrationData = JSON.parse(
+        localStorage.getItem("RegistrationData") || "[]"
+      );
+      const userIndex = registrationData.findIndex(
+        (user) => user.trn === currentUser.trn
+      );
+      if (userIndex !== -1) {
+        registrationData[userIndex] = currentUser;
+        localStorage.setItem(
+          "RegistrationData",
+          JSON.stringify(registrationData)
+        );
+      }
+
+      // Save invoice to AllInvoices
+      const allInvoices = JSON.parse(
+        localStorage.getItem("AllInvoices") || "[]"
+      );
+      allInvoices.push(invoice);
+      localStorage.setItem("AllInvoices", JSON.stringify(allInvoices));
+
+      // Clear cart
+      currentUser.cart = {};
+      localStorage.setItem("currentUser", JSON.stringify(currentUser));
+
+      // Update user in RegistrationData again with empty cart
+      if (userIndex !== -1) {
+        registrationData[userIndex] = currentUser;
+        localStorage.setItem(
+          "RegistrationData",
+          JSON.stringify(registrationData)
+        );
+      }
+
+      // Clear checkout data
+      localStorage.removeItem("checkoutCart");
+      localStorage.removeItem("charges");
+
+      // alert("Order confirmed! Thank you for your business.");
+      alert(`Invoice #${invoiceNumber} has been sent to ${currentUser.email}`);
+      window.location.href = "index.html";
+    });
+});
 
 // Analysis Functions
 function ShowUserFrequency() {
