@@ -1,3 +1,13 @@
+/*QUESTION 3
+3.	Cart Page:
+  a.	Create a shopping cart page that lists the items in the cart (name, price, quantity, sub-total, discount, tax, and total, etc).
+  b.	Allow users to remove items from the cart and update quantities.
+  c.	Calculate and display the total price of the items in the cart.
+Include:
+    d.	Clear All button (remove all items from shopping cart)
+    e.	Check Out button (redirects to Checkout Page)
+    f.	Close button (close the shopping cart view) 
+*/
 // Check if user is logged in
 if (!localStorage.getItem("currentUser")) {
   window.location.href = "login.html";
