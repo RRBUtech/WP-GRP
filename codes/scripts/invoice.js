@@ -1,3 +1,29 @@
+/* QUESTION 4 & 5
+4.	Checkout Page:
+  Checkout
+  a.	Show a summary of the shopping cart with the total cost.
+  b.	Allow the user to enter their shipping details (e.g., name, address, amount being paid).
+  c.	When the user confirms the checkout, generate an invoice. 
+  Include:
+  d.	Confirm button (confirms the checkout)
+  e.	Cancel button (go back to the cart)
+
+5.	Invoice Generation:
+a.	After checkout, generate an invoice with the following details:
+    `Name of company`
+    `Date of invoice`
+    `Shipping information` (from checkout)
+    `Invoice number` (unique)
+    ‘trn’
+    `Purchased items` (name, quantity, price, discount)
+    `Taxes`
+    `Subtotal`
+    `Total cost`
+b.	Append this invoice to the user’s array of invoices (array of objects). Also store the invoice to localStorage with the key called AllInvoices (as an array of objects) to access later.
+After generating the invoice
+c.	Optionally, display a message indicating that the invoice has been “sent” to the user’s email.
+
+*/
 // Check if user is logged in
 if (!localStorage.getItem("currentUser")) {
   window.location.href = "login.html";
