@@ -1,83 +1,134 @@
-Jamaica Auto Spa
+# Jamaica Auto Spa
 
-Group Information
-•	Group Name: Jamaica Auto Spa
-•	Members: 
+## Group Information
 
-    Merrick Foster (2306913)	
-    Contributed to designing of wireframes & sitemap, and coding of the webpages  	
-    MERRICKAFOSTER@students.utech.edu.jm
+**Group Name:** Jamaica Auto Spa
 
-    Rohando Brown(1800723)	
-    Contributed to designing of wireframes & sitemap, and coding of the webpages  	
-    rohandorbrown@students.utech.edu.jm
+| Name | ID# | Contributions | Email |
+|------|-----|---------------|-------|
+| Merrick Foster | 2306913 | Contributed to designing wireframes & sitemap, and coding webpages | merrickafoster@students.utech.edu.jm |
+| Rohando Brown | 1800723 | Contributed to designing wireframes & sitemap, and coding webpages | rohandorbrown@students.utech.edu.jm |
+| Leticia Moo-Pow | 2405571 | Contributed to designing wireframes & sitemap, and coding webpages | leticiasmoo-pow@students.utech.edu.jm |
 
-    Leticia Moo-Pow (2405571)	
-    Contributed to designing of wireframes & sitemap, and coding of the webpages
-    LETICIASMOO-POW@students.utech.edu.jm	
-		
+---
 
-Project Overview
-    Jamaica Auto spa  is an e-commerce website specializing in premium car detailing services. Jamaica Auto Spa offers an unparalleled experience with top-notch services like interior and exterior detailing, paint restoration, ceramic coating, and more. Our platform is designed to provide convenience and satisfaction, ensuring every car leaves with a showroom shine. The website features user authentication, product catalog, shopping cart functionality, checkout, and invoice generation. It was built using HTML, CSS, and JavaScript with data persistence through localStorage.
+## Project Overview
 
-Features
-    •	User Registration and Login with TRN validation
-    •	Password Reset functionality
-    •	Product Catalog with tech gadgets categorization
-    •	Interactive Shopping Cart with real-time updates
-    •	Streamlined Checkout Process
-    •	Detailed Invoice Generation
-    •	User Statistics Dashboard with visual representations
-    •	Invoice Search and Display functionality
+**Jamaica Auto Spa** is an e-commerce website specializing in premium car detailing services. We offer an unparalleled experience with services such as:
 
-Technologies Used
-    •	Frontend: HTML5, CSS3, JavaScript
-    •	CSS Framework: Bootstrap 
-    •	Additional Libraries: 
-    o	Font Awesome for icons
-    o	Google Fonts (Poppins)
-    •	Data Storage: localStorage
-    •	Draw.io
-    o	Wireframes and sitemap
-    o	Link to the wireframe & Sitemap: WireFrames_&sitemap_Jamaica Auto Spa_2025
+- Interior and exterior detailing  
+- Paint restoration  
+- Ceramic coating  
 
-Installation and Setup
-    1.	Click hosting link 
+The platform prioritizes convenience and satisfaction, ensuring every car leaves with a showroom shine.
 
-Test Credentials
-    Regular Users 
-    •	TRN: 123-456-896
-    •	Password: Today123
+**Key Website Features:**
 
-    Admin users 
-    •	TRN: 999-999-999
-    •	Password: admin123
+- User authentication  
+- Product catalog  
+- Shopping cart functionality  
+- Checkout process  
+- Invoice generation  
 
-Usage Instructions
-    1.	Registration: Click the "Register" link on the login page and fill out the form with your details. Your TRN must be in the format 000-000-000, and you must be over 18 years old to register.
-    2.	Login: Use your TRN and password to access the product catalog. You have three attempts before your account is locked.
-    3.	Shopping: Browse products by category, add items to your cart, and adjust quantities as needed.
-    4.	Checkout: Review your cart and complete your purchase by entering shipping information.
-    5.	Invoice: View and save your generated invoice, which includes all purchase details.
-    6.	Dashboard: For admin users, access user statistics showing gender and age distributions, and view/search all invoices.
+**Tech Stack:**
 
-localStorage Keys
-    •	RegistrationData: Array of user objects containing personal information and purchase history
-    •	AllProducts: Array of product objects with details and images
-    •	AllInvoices: Array of invoice objects generated after successful purchases
-    •	currentUser: Object containing information about the currently logged-in user
+- **Frontend:** HTML5, CSS3, JavaScript  
+- **CSS Framework:** Bootstrap  
+- **Additional Libraries:**
+  - Font Awesome (Icons)
+  - Google Fonts (Poppins)  
+- **Data Storage:** localStorage  
+- **Design Tools:** Draw.io  
 
-Browser Compatibility
-    This project is optimized for Google Chrome as per requirements, but is also compatible with modern versions of Firefox, Safari, and Edge.
+---
 
-Responsive Design
-    The website is fully responsive with optimized layouts for:
-    •	Desktop (1024px and above)
-    •	Tablet (768px to 1023px)
-    •	Mobile (below 768px)
+## Features
 
-Detailed Explanation of the wireframes and sitemap:
-    We developed a visual blueprints for key pages including the home registration, login, product, shopping cart, dashboard page focusing on responsive design principles.
-    We created a hierarchical navigation structure to ensure intuitive user flow across the website. 
+- ✅ User Registration and Login (with TRN validation)  
+- 🔐 Password Reset Functionality  
+- 🛍️ Product Catalog with Tech Gadgets Categorization  
+- 🛒 Interactive Shopping Cart with Real-Time Updates  
+- 💳 Streamlined Checkout Process  
+- 🧾 Detailed Invoice Generation  
+- 📊 User Statistics Dashboard (Admin View)  
+- 🔍 Invoice Search and Display Functionality  
 
-    Link to wireframes: https://studentsutechedu-my.sharepoint.com/:b:/g/personal/merrickafoster_students_utech_edu_jm/Efshse1Z8idPjxEsCB_KQFcBjxi4VRa6oetIZax08XGruQ?e=wOXdGb
+---
+
+## Installation and Setup
+
+1. Click the hosting link (provided separately).
+2. Access with test credentials below.
+
+### Test Credentials
+
+#### Regular Users
+- **TRN:** `123-456-896`  
+- **Password:** `Today123`
+
+#### Admin Users
+- **TRN:** `999-999-999`  
+- **Password:** `admin123`
+
+---
+
+## Usage Instructions
+
+- **Registration:**  
+  Click the "Register" link and fill out your details. TRN must be in `000-000-000` format. Must be over 18 to register.
+
+- **Login:**  
+  Use TRN and password. You have 3 login attempts before lockout.
+
+- **Shopping:**  
+  Browse by category, add items to cart, adjust quantities.
+
+- **Checkout:**  
+  Review cart, enter shipping info, complete your purchase.
+
+- **Invoice:**  
+  Save/view invoice with full purchase breakdown.
+
+- **Dashboard (Admin):**  
+  View user stats (gender/age), search invoices.
+
+---
+
+## localStorage Keys
+
+| Key | Description |
+|-----|-------------|
+| `RegistrationData` | Array of user objects (personal info + history) |
+| `AllProducts` | Array of product objects (with images & descriptions) |
+| `AllInvoices` | Array of generated invoice objects |
+| `currentUser` | Object containing currently logged-in user info |
+
+---
+
+## Browser Compatibility
+
+- ✅ Optimized for **Google Chrome**  
+- ✅ Also compatible with:
+  - Firefox
+  - Safari
+  - Microsoft Edge
+
+---
+
+## Responsive Design
+
+Fully responsive layouts for:
+
+- **Desktop:** 1024px and above  
+- **Tablet:** 768px to 1023px  
+- **Mobile:** below 768px  
+
+---
+
+## Wireframes & Sitemap
+
+- Visual blueprints created for key pages: Home, Registration, Login, Product, Cart, Dashboard  
+- Based on responsive design principles  
+- Hierarchical navigation for intuitive user flow  
+
+📎 [Link to Wireframes & Sitemap (Draw.io)](https://studentsutechedu-my.sharepoint.com/:b:/g/personal/merrickafoster_students_utech_edu_jm/Efshse1Z8idPjxEsCB_KQFcBjxi4VRa6oetIZax08XGruQ?e=wOXdGb)
