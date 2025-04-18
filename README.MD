@@ -58,7 +58,7 @@ The platform prioritizes convenience and satisfaction, ensuring every car leaves
 
 ## Installation and Setup
 
-1. Click the hosting link (provided separately).
+1. Click the hosting link 📎 [Website Hosting Link](https://rrbutech.github.io/WP-GRP/codes/index.html)
 2. Access with test credentials below.
 
 ### Test Credentials
