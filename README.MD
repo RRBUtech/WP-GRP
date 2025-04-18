@@ -9,7 +9,8 @@
 | Merrick Foster | 2306913 | Contributed to designing wireframes & sitemap, and coding webpages | merrickafoster@students.utech.edu.jm |
 | Rohando Brown | 1800723 | Contributed to designing wireframes & sitemap, and coding webpages | rohandorbrown@students.utech.edu.jm |
 | Leticia Moo-Pow | 2405571 | Contributed to designing wireframes & sitemap, and coding webpages | leticiasmoo-pow@students.utech.edu.jm |
-
+| Derron Bernard | 2403240 | Contributed to designing wireframes & sitemap, and coding webpages | derrondbernard@students.utech.edu.jm |
+| Brandon Smith | 2301075 | Contributed to designing wireframes & sitemap, and coding webpages | brandonsmith@students.utech.edu.jm |
 ---
 
 ## Project Overview
